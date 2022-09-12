@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Lighthouse</string>
+    <string name="title_journal">Journal</string>
+    <string name="title_timeline">Timeline</string>
+    <string name="title_affirmations">Affirmations</string>
+    <string name="title_activity_timeline_fragment">TimelineFragment</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Input Text Strings -->
+    <string name="currentFeeling">How are you feeling right now?</string>
+    <string name="resultantActions">This feeling makes me want to...</string>
+    <string name="what">What happened?</string>
+    <string name="where">Where were you when it happened?</string>
+    <string name="noticed">Anything noteworthy?</string>
+    <string name="whenIFelt">When I felt...</string>
+    <string name="actionsTaken">I did this in response...</string>
+    <string name="theThoughtsThatCameToMind">Thoughts that came to mind?</string>
+    <string name="appropriateReaction">Was my feeling appropriate?</string>
+    <string name="isTheSituationControllable">Is it something I can control?</string>
+    <string name="canITolerateIt">Can I tolerate the situation?</string>
+    <string name="doINeedToSetABoundary">Do I need to create a boundary?</string>
+    <string name="boundaryToSet">What boundary should I set?</string>
+
+    <!-- Input Hint Strings -->
+    <string name="currentFeelingHint"> Angry? Sad? Fearful?</string>
+    <string name="resultantActionsHint">What do you want to do?</string>
+    <string name="whatHint">Its okay if you cant think of anything</string>
+    <string name="whereHint">Try to be as specific as you can</string>
+    <string name="noticedHint">Anything worth noting?</string>
+    <string name="whenIFeltHint">How did you feel again?</string>
+    <string name="actionsTakenHint">What did you do about it?</string>
+    <string name="theThoughtsThatCameToMindHint">What were you thinking in the moment?</string>
+    <string name="appropriateReactionHint">Did the feeling make the situation better?</string>
+    <string name="isTheSituationControllableHint">Sometimes it is not, and that is okay.</string>
+    <string name="canITolerateItHint">Does not always mean you should have to...</string>
+
+
+
+
+
+
+</resources>
