@@ -1,6 +1,7 @@
 package com.example.lighthouse.model;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,8 +25,23 @@ public class Timeline {
 
 
     //Either plan requires a list of journal objects.
-    private List<Journal> timeline;
+    private static List<Journal> timeline;
+
+    public static List<Journal> getTimeline(){
+        return timeline;
+    }
 
 
+    public ArrayList<Journal> populateTimeline(){
+        ArrayList<Journal> entries = null;
+
+        return entries;
+    }
+
+
+    public void submitJournal(Journal entry){
+        timeline.add(entry);
+        System.out.println(entry.toString());
+    }
 
 }

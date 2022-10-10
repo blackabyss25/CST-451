@@ -10,7 +10,7 @@ public class TimelineViewModel extends ViewModel {
 
     public TimelineViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        //mText.setValue("This is home fragment");
     }
 
     public LiveData<String> getText() {
