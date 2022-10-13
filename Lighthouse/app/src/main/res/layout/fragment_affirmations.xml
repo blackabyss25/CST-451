@@ -13,6 +13,7 @@
         android:ems="10"
         android:hint="Put your next affirmation here!"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/commitButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,15 +36,15 @@
         android:id="@+id/noAffirmationsYetText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView1"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView1"
-        app:layout_constraintStart_toStartOf="@+id/scrollView1"
+        app:layout_constraintBottom_toBottomOf="@+id/affirmationsScrollView"
+        app:layout_constraintEnd_toEndOf="@+id/affirmationsScrollView"
+        app:layout_constraintStart_toStartOf="@+id/affirmationsScrollView"
         app:layout_constraintTop_toTopOf="@+id/addAffirmation"
         tools:ignore="MissingConstraints"></TextView>
 
 
     <ScrollView
-        android:id="@+id/scrollView1"
+        android:id="@+id/affirmationsScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
@@ -51,7 +52,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
-            android:id="@+id/affirmationsButtonsLayout"
+            android:id="@+id/affirmationsLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">

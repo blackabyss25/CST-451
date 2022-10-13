@@ -30,12 +30,21 @@ public class TimelineFragment extends Fragment {
     private FragmentTimelineBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Toast.makeText(getContext(), "Timeline View created",Toast.LENGTH_SHORT).show();
         TimelineViewModel timelineViewModel = new ViewModelProvider(this).get(TimelineViewModel.class);
         binding = FragmentTimelineBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         final TextView textView = binding.textTimeline;
 
         timelineViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        TextView noMemoriesYetTextView = binding.noMemoriesYetTextView;
+        JournalEntries journalEntries = new JournalEntries();
+
+        //For when there are no memories
+        if(journalEntries.getJournalEntries().size() == 0){
+            noMemoriesYetTextView.setText("You don't currently have any journal entries");
+        }
+
 
         //For each entry in the retrieved entries, create a button for it, the button will open a dialog to review
         ScrollView timelineScrollView = binding.timelineScrollView;
@@ -62,13 +71,12 @@ public class TimelineFragment extends Fragment {
             buttons.addView(nb);
         }
 
-
-
         return root;
     }
 
     @Override
     public void onDestroyView() {
+        //Toast.makeText(getContext(), "Timeline View destroyed",Toast.LENGTH_SHORT).show();
         super.onDestroyView();
         binding = null;
     }

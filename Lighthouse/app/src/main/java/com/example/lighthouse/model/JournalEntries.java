@@ -37,7 +37,6 @@ public class JournalEntries {
         return memories;
     }
 
-
     public void saveMemory(Journal newEntry) throws IOException {
         File saveFile = new File(filePath);
         //Add new memory to journal object

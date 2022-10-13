@@ -25,6 +25,7 @@ public class JournalFragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Toast.makeText(getContext(), "Journal View created",Toast.LENGTH_SHORT).show();
         JournalViewModel journalViewModel = new ViewModelProvider(this).get(JournalViewModel.class);
         binding = FragmentJournalBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -84,6 +85,7 @@ public class JournalFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        //Toast.makeText(getContext(), "Journal View destroyed",Toast.LENGTH_SHORT).show();
         super.onDestroyView();
         binding = null;
     }
