@@ -24,6 +24,8 @@ import com.example.lighthouse.model.Journal;
 import com.example.lighthouse.model.JournalEntries;
 
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,42 @@ public class TimelineFragment extends Fragment {
         JournalEntries journalEntries = new JournalEntries();
         ArrayList<Journal> entries = journalEntries.getJournalEntries();
 
+
+        //Create Dialog Box to display details of journal entry
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        View mView = getLayoutInflater().inflate(R.layout.journal_entry_dialog, null);
+        TextView currentFeeling, resultantActions, what, where, noticed, whenIFelt, actionsTaken, theThoughtsThatCameToMind,
+                appropriateReaction, isTheSituationControllable, canITolerateIt, doINeedToSetABoundary, boundaryToSet;
+        Button closeButton;
+        //Create elements of dialog
+        ArrayList<TextView> textViews = new ArrayList<>();
+        LinearLayout ll = mView.findViewById(R.id.dialogLinearLayout);
+
+        //Bind to View
+        currentFeeling = mView.findViewById(R.id.currentFeelingTextView);
+        resultantActions =  mView.findViewById(R.id.resultantActionsTextView);
+        what = mView.findViewById(R.id.whatTextView);
+        where = mView.findViewById(R.id.whereTextView);
+        noticed = mView.findViewById(R.id.noticedTextView);
+        whenIFelt = mView.findViewById(R.id.whenIFeltTextView);
+        actionsTaken = mView.findViewById(R.id.actionsTakenTextView);
+        theThoughtsThatCameToMind = mView.findViewById(R.id.theThoughtsThatCameToMindTextView);
+        appropriateReaction = mView.findViewById(R.id.appropriateReactionTextView);
+        isTheSituationControllable = mView.findViewById(R.id.isTheSituationControllableTextView);
+        canITolerateIt = mView.findViewById(R.id.canITolerateItTextView);
+        doINeedToSetABoundary = mView.findViewById(R.id.boundaryToSetTextView);
+        boundaryToSet = mView.findViewById(R.id.boundaryToSetTextView);
+        closeButton = mView.findViewById(R.id.closeButton);
+
+
+
+
+
+
+
+
+
+
         //For when there are no memories
         if(journalEntries.getJournalEntries().size() == 0){
             noMemoriesYetTextView.setText("You don't currently have any journal entries");
@@ -62,6 +100,7 @@ public class TimelineFragment extends Fragment {
                 journal.setPadding(100, 10, 100, 10);
 
                 Button jb = new Button(getContext());
+                jb.setId(j.getId());
                 jb.setText("I was " + j.getCurrentFeeling());
                 jb.setGravity(Gravity.CENTER);
                 jb.setPadding(100, 10, 100, 10);
@@ -78,35 +117,26 @@ public class TimelineFragment extends Fragment {
                 jb.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //Create Dialog Box to display details of journal entry
-                        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
-                        View mView = getLayoutInflater().inflate(R.layout.journal_entry_dialog, null);
-                        dialogBuilder.setView(mView);
-                        AlertDialog dialog = dialogBuilder.create();
+                        System.out.println("v: " + v.getId());
 
-                        //Create elements of dialog
-                        TextView currentFeeling, resultantActions, what, where, noticed, whenIFelt, actionsTaken, theThoughtsThatCameToMind,
-                                appropriateReaction, isTheSituationControllable, canITolerateIt, doINeedToSetABoundary, boundaryToSet;
-                        Button closeButton;
-
-                        //Bind to View
-                        currentFeeling = mView.findViewById(R.id.currentFeelingTextView);
-                        resultantActions =  mView.findViewById(R.id.resultantActionsTextView);
-                        what = mView.findViewById(R.id.whatTextView);
-                        where = mView.findViewById(R.id.whereTextView);
-                        noticed = mView.findViewById(R.id.noticedTextView);
-                        whenIFelt = mView.findViewById(R.id.whenIFeltTextView);
-                        actionsTaken = mView.findViewById(R.id.actionsTakenTextView);
-                        theThoughtsThatCameToMind = mView.findViewById(R.id.theThoughtsThatCameToMindTextView);
-                        appropriateReaction = mView.findViewById(R.id.appropriateReactionTextView);
-                        isTheSituationControllable = mView.findViewById(R.id.isTheSituationControllableTextView);
-                        canITolerateIt = mView.findViewById(R.id.canITolerateItTextView);
-                        doINeedToSetABoundary = mView.findViewById(R.id.boundaryToSetTextView);
-                        boundaryToSet = mView.findViewById(R.id.boundaryToSetTextView);
-                        closeButton = mView.findViewById(R.id.closeButton);
+                        //Put the textviews into a list for ease
+                        textViews.add(currentFeeling);
+                        textViews.add(resultantActions);
+                        textViews.add(what);
+                        textViews.add(where);
+                        textViews.add(noticed);
+                        textViews.add(whenIFelt);
+                        textViews.add(actionsTaken);
+                        textViews.add(theThoughtsThatCameToMind);
+                        textViews.add(appropriateReaction);
+                        textViews.add(isTheSituationControllable);
+                        textViews.add(canITolerateIt);
+                        textViews.add(doINeedToSetABoundary);
+                        textViews.add(boundaryToSet);
 
                         //Set Text fields to journal entry content
                         Journal e = journalEntries.getEntry(v.getId());
+                        System.out.println(e.toString());
                         currentFeeling.setText(e.getCurrentFeeling());
                         resultantActions.setText(e.getResultantActions());
                         what.setText(e.getWhat());
@@ -120,6 +150,17 @@ public class TimelineFragment extends Fragment {
                         canITolerateIt.setText(e.getCanITolerateIt());
                         doINeedToSetABoundary.setText(e.getDoINeedToSetABoundary());
                         boundaryToSet.setText(e.getBoundaryToSet());
+
+                        //Attach all textviews to LinearLayout
+
+                        for(TextView tv : textViews){
+                            //ll.addView(tv);
+                            System.out.println("tv.getText(): "+tv.getText());
+                        }
+
+                        dialogBuilder.setView(mView);
+                        AlertDialog dialog = dialogBuilder.create();
+                        dialog.show();
                         closeButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -127,27 +168,9 @@ public class TimelineFragment extends Fragment {
                                 dialog.dismiss();
                             }
                         });
-                        dialog.show();
                     }
                 });
-
                 timelineJournalEntries.addView(jb);
-
-                //For when I need to be able to push the notifications
-                /*
-                Button nb = new Button(getContext());
-                nb.setId(i + 1);
-                nb.setText("Button " + (i + 1));
-                nb.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getContext(), "You clicked button " + v.getId(), Toast.LENGTH_SHORT).show();
-                        //Logic here to set button to depressed state to allow for
-                    }
-                });
-                nb.setBackgroundColor(Color.GREEN);
-                buttons.addView(nb);
-                */
             }
         }
 
