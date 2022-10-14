@@ -1,6 +1,7 @@
 package com.example.lighthouse.ui.timeline;
 
 import android.app.AlertDialog;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -48,16 +49,14 @@ public class TimelineFragment extends Fragment {
 
 
         //Create Dialog Box to display details of journal entry
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
-
         View mView = getLayoutInflater().inflate(R.layout.journal_entry_dialog, null);
-
         TextView currentFeeling, resultantActions, what, where, noticed, whenIFelt, actionsTaken, theThoughtsThatCameToMind,
                 appropriateReaction, isTheSituationControllable, canITolerateIt, doINeedToSetABoundary, boundaryToSet;
-
         Button closeButton;
 
         //Create elements of dialog
+        ScrollView dialogScrollView = mView.findViewById(R.id.dialogScrollView);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
         dialogBuilder.setView(mView);
         AlertDialog dialog = dialogBuilder.create();
         ArrayList<TextView> textViews = new ArrayList<>();
@@ -80,15 +79,6 @@ public class TimelineFragment extends Fragment {
         boundaryToSet = mView.findViewById(R.id.boundaryToSetTextView);
         closeButton = mView.findViewById(R.id.closeButton);
 
-
-
-
-
-
-
-
-
-
         //For when there are no memories
         if(journalEntries.getJournalEntries().size() == 0){
             noMemoriesYetTextView.setText("You don't currently have any journal entries");
@@ -104,23 +94,26 @@ public class TimelineFragment extends Fragment {
                 jb.setId(j.getId());
                 jb.setText("I was " + j.getCurrentFeeling());
                 jb.setGravity(Gravity.CENTER);
-                jb.setPadding(100, 10, 100, 40);
+                jb.setPadding(100, 10, 100, 10);
+
+                //Create a small gap between the buttons
+                TextView space = new TextView(getContext());
+                space.setHeight(10);
+
                 //Choose a different color for the button based on the emotion experienced for ease of viewing and easier trend assessment
                 if(j.getCurrentFeeling().equals("happy")){
-                    jb.setBackgroundColor(Color.GREEN);
+                    jb.setBackgroundColor(Color.BLUE);
                 }
                 else if(j.getCurrentFeeling().equals("mad")){
                     jb.setBackgroundColor(Color.RED);
                 }
                 else {
+                    //Due to the freedom of the application, at this juncture I don't have the ability to decipher more nuanced ways of describing the feelings, so just a general gray is going to have to work
                     jb.setBackgroundColor(Color.GRAY);
                 }
                 jb.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-
-                        System.out.println("v: " + v.getId());
 
                         //Put the textviews into a list for ease
                         textViews.add(currentFeeling);
@@ -162,12 +155,16 @@ public class TimelineFragment extends Fragment {
                             public void onClick(View v) {
                                 //Close the dialog
                                 dialog.dismiss();
+                                dialogScrollView.scrollTo(0,0);
                             }
                         });
                         dialog.show();
+                        dialogScrollView.scrollTo(0,0);
                     }
+
                 });
                 timelineJournalEntries.addView(jb);
+                timelineJournalEntries.addView(space);
             }
         }
         return root;
