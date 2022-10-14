@@ -36,18 +36,21 @@ public class JournalFragment extends Fragment {
         EditText what = binding.whatInput;
         EditText where = binding.whereInput;
         EditText noticed = binding.noticedInput;
+        EditText actionsTaken = binding.actionsTakenInput;
         EditText when = binding.whenIFeltInput;
         EditText thoughts = binding.thoughtsInput;
         EditText appropriate = binding.appropriateReactionInput;
         EditText control = binding.controlInput;
         EditText tolerance = binding.canITolerateItInput;
         EditText boundary = binding.boundaryInput;
+
         ArrayList<EditText> fields = new ArrayList<>();
         fields.add(currentEmotion);
         fields.add(resultantActions);
         fields.add(what);
         fields.add(where);
         fields.add(noticed);
+        fields.add(actionsTaken);
         fields.add(when);
         fields.add(thoughts);
         fields.add(appropriate);
@@ -76,6 +79,7 @@ public class JournalFragment extends Fragment {
                     ne.setWhat(what.getText().toString());
                     ne.setWhere(where.getText().toString());
                     ne.setNoticed(noticed.getText().toString());
+                    ne.setActionsTaken(actionsTaken.getText().toString());
                     ne.setWhenIFelt(when.getText().toString());
                     ne.setTheThoughtsThatCameToMind(thoughts.getText().toString());
                     ne.setAppropriateReaction(appropriate.getText().toString());
@@ -96,25 +100,6 @@ public class JournalFragment extends Fragment {
                 } else {
                     Toast.makeText(getContext(), "Please make sure you answer everything before clicking Finish",Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
-
-
-
-                //-----------------------  For Testing -----------------------------------------------
-                //Toast.makeText(getContext(), ne.toString(),Toast.LENGTH_SHORT).show();
-                if(journals.getJournalEntries().size() == 0){
-                    //Toast.makeText(getContext(), "No journal entries",Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    for(Journal entry : journals.getJournalEntries()){
-                        //Toast.makeText(getContext(), entry.toString(),Toast.LENGTH_SHORT).show();
-                    }
-                }
-                //-----------------------  For Testing -----------------------------------------------
-
             }
         });
         return root;

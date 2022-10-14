@@ -11,91 +11,199 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/currentFeelingTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_is_how_you_were_feeling_in_the_moment"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/currentFeelingTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/resultantActionsTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/because_of_this_you_wanted_to"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/resultantActionsTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/whatTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_is_what_happened"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/whatTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/whereTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_is_where_it_happened"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/whereTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/noticedTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_is_what_you_found_noteworthy"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/noticedTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/whenIFeltTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_is_when_it_happened"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/whenIFeltTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/actionsTakenTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_is_what_you_did_in_response"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/actionsTakenTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/theThoughtsThatCameToMindTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_is_what_thoughts_came_to_mind_at_the_time"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/theThoughtsThatCameToMindTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/appropriateReactionTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/did_you_feel_like_this_what_an_appropriate_feeling"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/appropriateReactionTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/isTheSituationControllableTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/was_the_situation_something_you_could_control"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/isTheSituationControllableTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/canITolerateItTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/did_you_think_you_could_tolerate_it"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/canITolerateItTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
+            <TextView
+                android:id="@+id/boundaryToSetTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:text="@string/this_is_the_boundary_you_set"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/boundaryToSetTextView"
             android:padding="10dp"
+            android:paddingBottom="40dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<!-- ================================================================================= -->
         <Button
             android:id="@+id/closeButton"
             android:padding="10dp"

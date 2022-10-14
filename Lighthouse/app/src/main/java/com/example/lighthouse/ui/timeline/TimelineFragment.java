@@ -35,7 +35,6 @@ public class TimelineFragment extends Fragment {
     private FragmentTimelineBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //Toast.makeText(getContext(), "Timeline View created",Toast.LENGTH_SHORT).show();
         TimelineViewModel timelineViewModel = new ViewModelProvider(this).get(TimelineViewModel.class);
         binding = FragmentTimelineBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -50,13 +49,20 @@ public class TimelineFragment extends Fragment {
 
         //Create Dialog Box to display details of journal entry
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+
         View mView = getLayoutInflater().inflate(R.layout.journal_entry_dialog, null);
+
         TextView currentFeeling, resultantActions, what, where, noticed, whenIFelt, actionsTaken, theThoughtsThatCameToMind,
                 appropriateReaction, isTheSituationControllable, canITolerateIt, doINeedToSetABoundary, boundaryToSet;
+
         Button closeButton;
+
         //Create elements of dialog
+        dialogBuilder.setView(mView);
+        AlertDialog dialog = dialogBuilder.create();
         ArrayList<TextView> textViews = new ArrayList<>();
         LinearLayout ll = mView.findViewById(R.id.dialogLinearLayout);
+
 
         //Bind to View
         currentFeeling = mView.findViewById(R.id.currentFeelingTextView);
@@ -92,18 +98,13 @@ public class TimelineFragment extends Fragment {
         //System.out.println("journalEntries.getAllEntries().size:" + journalEntries.getAllEntries().size());
         if (journalEntries.getJournalEntries() != null) {
             for (Journal j : entries) {
-                System.out.println("created timeline entry for id: "+j.getId());
-
-                TextView journal = new TextView(getContext());
-                journal.setText("I was " + j.getCurrentFeeling());
-                journal.setGravity(Gravity.CENTER);
-                journal.setPadding(100, 10, 100, 10);
+                //System.out.println("created timeline entry for id: "+j.getId());
 
                 Button jb = new Button(getContext());
                 jb.setId(j.getId());
                 jb.setText("I was " + j.getCurrentFeeling());
                 jb.setGravity(Gravity.CENTER);
-                jb.setPadding(100, 10, 100, 10);
+                jb.setPadding(100, 10, 100, 40);
                 //Choose a different color for the button based on the emotion experienced for ease of viewing and easier trend assessment
                 if(j.getCurrentFeeling().equals("happy")){
                     jb.setBackgroundColor(Color.GREEN);
@@ -117,6 +118,8 @@ public class TimelineFragment extends Fragment {
                 jb.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+
                         System.out.println("v: " + v.getId());
 
                         //Put the textviews into a list for ease
@@ -137,6 +140,8 @@ public class TimelineFragment extends Fragment {
                         //Set Text fields to journal entry content
                         Journal e = journalEntries.getEntry(v.getId());
                         System.out.println(e.toString());
+
+                        //Set TextView content to journal entry data
                         currentFeeling.setText(e.getCurrentFeeling());
                         resultantActions.setText(e.getResultantActions());
                         what.setText(e.getWhat());
@@ -151,16 +156,7 @@ public class TimelineFragment extends Fragment {
                         doINeedToSetABoundary.setText(e.getDoINeedToSetABoundary());
                         boundaryToSet.setText(e.getBoundaryToSet());
 
-                        //Attach all textviews to LinearLayout
-
-                        for(TextView tv : textViews){
-                            //ll.addView(tv);
-                            System.out.println("tv.getText(): "+tv.getText());
-                        }
-
-                        dialogBuilder.setView(mView);
-                        AlertDialog dialog = dialogBuilder.create();
-                        dialog.show();
+                        //Set Dialog button function to close the dialog
                         closeButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -168,15 +164,12 @@ public class TimelineFragment extends Fragment {
                                 dialog.dismiss();
                             }
                         });
+                        dialog.show();
                     }
                 });
                 timelineJournalEntries.addView(jb);
             }
         }
-
-
-
-
         return root;
     }
 

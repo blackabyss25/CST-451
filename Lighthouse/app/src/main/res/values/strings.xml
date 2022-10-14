@@ -35,6 +35,19 @@
     <string name="isTheSituationControllableHint">Sometimes it is not, and that is okay.</string>
     <string name="canITolerateItHint">Does not always mean you should have to...</string>
     <string name="close">Close</string>
+    <string name="this_is_how_you_were_feeling_in_the_moment">This is how you were feeling in the moment:</string>
+    <string name="because_of_this_you_wanted_to">This feeling made you want to:</string>
+    <string name="this_is_what_happened">This is what happened:</string>
+    <string name="this_is_where_it_happened">This is where it happened:</string>
+    <string name="this_is_what_you_found_noteworthy">This is what you found noteworthy:</string>
+    <string name="this_is_when_it_happened">This is when it happened:</string>
+    <string name="this_is_what_you_did_in_response">This is what you did in response:</string>
+    <string name="this_is_what_thoughts_came_to_mind_at_the_time">This is what thoughts came to mind at the time:</string>
+    <string name="did_you_feel_like_this_what_an_appropriate_feeling">Did you feel like this what an appropriate feeling:</string>
+    <string name="was_the_situation_something_you_could_control">Was the situation something you could control:</string>
+    <string name="this_is_the_boundary_you_set">This is the boundary you set:</string>
+    <string name="did_you_think_you_could_tolerate_it">Did you think you could tolerate it:</string>
+    <string name="did_you_do_anything_in_response">Did you do anything in response?</string>
 
 
 </resources>

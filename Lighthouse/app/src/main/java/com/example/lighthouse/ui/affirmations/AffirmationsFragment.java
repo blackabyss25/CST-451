@@ -39,35 +39,27 @@ public class AffirmationsFragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //Toast.makeText(getContext(), "Affirmations View Created",Toast.LENGTH_SHORT).show();
+        //-------------------------- Bindings & Instantiations ------------------------------------------
         AffirmationsViewModel affirmationsViewModel = new ViewModelProvider(this).get(AffirmationsViewModel.class);
-
-        //-------------------------- Bindings & Instantiations -----------------------------------
         binding = FragmentAffirmationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         EditText affirmationInput = binding.addAffirmation;
         Button commitButton = binding.commitButton;
-
         LinearLayout affirmationsLinearLayout = binding.affirmationsLinearLayout;
         LinearLayout buttons = binding.affirmationsLinearLayout;
         TextView noAffirmationsYet = binding.noAffirmationsYetText;
         affirmationEntries = new AffirmationEntries();
-        //-------------------------- Bindings & Instantiations -----------------------------------
-
-
-        //Toast.makeText(getContext(),"Loaded " +affirmations.size() + " affirmations", Toast.LENGTH_LONG).show();
+        //-------------------------- End of Bindings & Instantiations -----------------------------------
 
         //For when there are no affirmations
         if (affirmationEntries.getAffirmations() == null && affirmationEntries.getSize() == 0) {
             noAffirmationsYet.setText("You don't currently have any affirmations");
         }
+
         //--------------------- On Create View, load all previously written affirmations into the linear layout for viewing ---------------------------------------
-        //System.out.println("affirmationEntries.getAllAffirmations().size:" + affirmationEntries.getAllAffirmations().size());
         if (affirmationEntries.getAffirmations() != null) {
-            //System.out.println("affirmationEntries.getAllAffirmations().size:" + affirmationEntries.getAllAffirmations().size());
             for (Affirmation a : affirmationEntries.getAffirmations()) {
                 System.out.println();
-                //Create the textview to be displayed ------------------------> Will eventually be upgraded to a button once I get the base functionality working
                 TextView affirmation = new TextView(getContext());
                 affirmation.setText(a.getText());
                 affirmation.setGravity(Gravity.CENTER);
@@ -78,26 +70,9 @@ public class AffirmationsFragment extends Fragment {
                     affirmation.setBackgroundColor(Color.GRAY);
                 }
                 affirmationsLinearLayout.addView(affirmation);
-
-                //For when I need to be able to push the notifications
-                /*
-                Button nb = new Button(getContext());
-                nb.setId(i + 1);
-                nb.setText("Button " + (i + 1));
-                nb.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getContext(), "You clicked button " + v.getId(), Toast.LENGTH_SHORT).show();
-                        //Logic here to set button to depressed state to allow for
-                    }
-                });
-                nb.setBackgroundColor(Color.GREEN);
-                buttons.addView(nb);
-                */
             }
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------
-        //------------- For Testing/future implementation of loaded affirmations
 
         //---------------- Set commit button functionality -----------------------
         commitButton.setOnClickListener(new View.OnClickListener() {
@@ -140,17 +115,12 @@ public class AffirmationsFragment extends Fragment {
             }
         });
         //------------------------------------------------------------------------
+
         return root;
     }
 
     @Override
     public void onDestroyView() {
-        /*for (int i = 0; i < affirmations.size(); i++) {
-            saveAffirmation(affirmations.get(i));
-            //Toast.makeText(getContext(),"saved affirmation: " + affirmations.get(i).getText(), Toast.LENGTH_LONG).show();
-        }*/
-        //Toast.makeText(getContext(), "Affirmation View destroyed",Toast.LENGTH_SHORT).show();
-        //Toast.makeText(getContext(), "Affirmation View destroyed | affirmations: " + affirmationEntries.getAllAffirmations().size(),Toast.LENGTH_SHORT).show();
         super.onDestroyView();
         binding = null;
     }
