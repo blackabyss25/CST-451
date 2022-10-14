@@ -16,12 +16,13 @@ import com.example.lighthouse.databinding.FragmentJournalBinding;
 import com.example.lighthouse.model.Journal;
 import com.example.lighthouse.model.JournalEntries;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class JournalFragment extends Fragment {
 
     private FragmentJournalBinding binding;
-    private JournalEntries memories;
+    private JournalEntries journals;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,39 +42,75 @@ public class JournalFragment extends Fragment {
         EditText control = binding.controlInput;
         EditText tolerance = binding.canITolerateItInput;
         EditText boundary = binding.boundaryInput;
+        ArrayList<EditText> fields = new ArrayList<>();
+        fields.add(currentEmotion);
+        fields.add(resultantActions);
+        fields.add(what);
+        fields.add(where);
+        fields.add(noticed);
+        fields.add(when);
+        fields.add(thoughts);
+        fields.add(appropriate);
+        fields.add(control);
+        fields.add(tolerance);
+        fields.add(boundary);
         Button submit = binding.journalSubmit;
-        memories = new JournalEntries();
+        journals = new JournalEntries();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Journal ne = new Journal();
-                ne.setCurrentFeeling(currentEmotion.getText().toString());
-                ne.setResultantActions(currentEmotion.getText().toString());
-                ne.setWhat(currentEmotion.getText().toString());
-                ne.setWhere(currentEmotion.getText().toString());
-                ne.setNoticed(currentEmotion.getText().toString());
-                ne.setWhenIFelt(currentEmotion.getText().toString());
-                ne.setTheThoughtsThatCameToMind(currentEmotion.getText().toString());
-                ne.setAppropriateReaction(currentEmotion.getText().toString());
-                ne.setTheSituationControllable(currentEmotion.getText().toString());
-                ne.setCanITolerateIt(currentEmotion.getText().toString());
-                ne.setBoundaryToSet(currentEmotion.getText().toString());
-
-                try {
-                    memories.saveMemory(ne);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                //Initial if check is to make sure they don't submit an empty
+                boolean allFieldsPopulated = true;
+                //Check all fields are populated, assume yes, look through all of them, and if you find any that aren't set to false to prevent incomplete submission
+                for(EditText et : fields){
+                    if(et.getText().toString().equals("")){
+                       allFieldsPopulated = false;
+                    }
                 }
+                //Once you know that all submission fields have been populated, actually continue with saving the entry
+                if(allFieldsPopulated){
+                    Journal ne = new Journal();
+                    ne.setCurrentFeeling(currentEmotion.getText().toString());
+                    ne.setResultantActions(resultantActions.getText().toString());
+                    ne.setWhat(what.getText().toString());
+                    ne.setWhere(where.getText().toString());
+                    ne.setNoticed(noticed.getText().toString());
+                    ne.setWhenIFelt(when.getText().toString());
+                    ne.setTheThoughtsThatCameToMind(thoughts.getText().toString());
+                    ne.setAppropriateReaction(appropriate.getText().toString());
+                    ne.setTheSituationControllable(control.getText().toString());
+                    ne.setCanITolerateIt(tolerance.getText().toString());
+                    ne.setBoundaryToSet(boundary.getText().toString());
+                    ne.setId(journals.getJournalEntries().size()+1);
+
+                    try {
+                        journals.saveEntry(ne);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //Reset text inputs to empty
+                    for(EditText et : fields){
+                        et.setText("");
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Please make sure you answer everything before clicking Finish",Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+
+
 
                 //-----------------------  For Testing -----------------------------------------------
                 //Toast.makeText(getContext(), ne.toString(),Toast.LENGTH_SHORT).show();
-                if(memories.getJournalEntries().size() == 0){
-                    Toast.makeText(getContext(), "No journal entries",Toast.LENGTH_SHORT).show();
+                if(journals.getJournalEntries().size() == 0){
+                    //Toast.makeText(getContext(), "No journal entries",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    for(Journal entry : memories.getJournalEntries()){
-                        Toast.makeText(getContext(), entry.toString(),Toast.LENGTH_SHORT).show();
+                    for(Journal entry : journals.getJournalEntries()){
+                        //Toast.makeText(getContext(), entry.toString(),Toast.LENGTH_SHORT).show();
                     }
                 }
                 //-----------------------  For Testing -----------------------------------------------

@@ -34,6 +34,7 @@
     <string name="appropriateReactionHint">Did the feeling make the situation better?</string>
     <string name="isTheSituationControllableHint">Sometimes it is not, and that is okay.</string>
     <string name="canITolerateItHint">Does not always mean you should have to...</string>
+    <string name="close">Close</string>
 
 
 </resources>

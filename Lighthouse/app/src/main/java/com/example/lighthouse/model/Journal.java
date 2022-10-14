@@ -9,9 +9,6 @@ public class Journal implements Serializable {
     private String resultantActions;
     //Identify the Case Section
     private String what;
-
-
-
     private String where;
     private String noticed;
     //Identify the Behavior and Thoughts Section
@@ -169,6 +166,22 @@ public class Journal implements Serializable {
 
     public void setAppropriateReaction(String appropriateReaction) {
         this.appropriateReaction = appropriateReaction;
+    }
+
+    public String getAppropriateReaction() {
+        return appropriateReaction;
+    }
+
+    public String getIsTheSituationControllable() {
+        return isTheSituationControllable;
+    }
+
+    public String getCanITolerateIt() {
+        return canITolerateIt;
+    }
+
+    public String getDoINeedToSetABoundary() {
+        return doINeedToSetABoundary;
     }
 
     public String isTheSituationControllable() {

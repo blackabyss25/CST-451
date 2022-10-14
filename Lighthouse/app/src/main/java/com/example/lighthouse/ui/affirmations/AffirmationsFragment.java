@@ -47,7 +47,7 @@ public class AffirmationsFragment extends Fragment {
         View root = binding.getRoot();
         EditText affirmationInput = binding.addAffirmation;
         Button commitButton = binding.commitButton;
-        ScrollView affirmationsScrollView = binding.affirmationsScrollView;
+
         LinearLayout affirmationsLinearLayout = binding.affirmationsLinearLayout;
         LinearLayout buttons = binding.affirmationsLinearLayout;
         TextView noAffirmationsYet = binding.noAffirmationsYetText;
@@ -134,7 +134,7 @@ public class AffirmationsFragment extends Fragment {
                     noAffirmationsYet.setText("");
                     //Clear out input box
                     affirmationInput.setText("");
-                    //Refresh page
+
 
                 }
             }

@@ -50,11 +50,10 @@
         android:layout_marginTop="100dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
-
         <LinearLayout
             android:id="@+id/affirmationsLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
         </LinearLayout>
     </ScrollView>

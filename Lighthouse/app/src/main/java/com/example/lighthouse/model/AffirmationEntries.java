@@ -19,8 +19,8 @@ public class AffirmationEntries {
 
     public AffirmationEntries(){
         this.affirmations = new ArrayList<>();
-        this.affirmations = getAllAffirmations();
         this.size = 0;
+        this.affirmations = getAllAffirmations();
     }
 
     public ArrayList<Affirmation> getAllAffirmations(){
@@ -57,13 +57,8 @@ public class AffirmationEntries {
     }
 
     public void saveAffirmation(Affirmation na){
-        System.out.println("Affirmation ID:"+na.getId()+" Text: "+na.getText());
-        System.out.println("Saving Affirmation...");
-        System.out.println("affirmations.size() prior to add:"+getSize());
         affirmations.add(getSize(),na);
-        System.out.println("affirmations.size() after add:"+getSize());
         File saveFile = new File(filePath+ na.getId()+".txt");
-        System.out.println("saveFile: " + saveFile.getName());
         try{
             saveFile.createNewFile();
             FileOutputStream fos = new FileOutputStream(saveFile);
