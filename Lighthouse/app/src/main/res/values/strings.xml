@@ -52,6 +52,7 @@
     <string name="commit_to_it">Commit to it!</string>
     <string name="put_your_next_affirmation_here">Put your next affirmation here!</string>
     <string name="finish">Finish</string>
-
+    <string name="affirmation">Affirmation</string>
+    <string name="affirmations">Affirmations</string>
 
 </resources>

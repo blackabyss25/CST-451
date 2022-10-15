@@ -69,6 +69,22 @@ public class AffirmationsFragment extends Fragment {
         TextView legend = binding.legend;
 
 
+        //Creating the notification state to be pushed to the user's device
+        String notification_channel_id = "0425";
+        NotificationManager mNotificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel(notification_channel_id, getContext().getString(R.string.affirmation), NotificationManager.IMPORTANCE_DEFAULT);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            mNotificationManager.createNotificationChannel(notificationChannel);
+        }
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getContext(), notification_channel_id);
+        mBuilder.setSmallIcon(R.drawable.ic_launcher_foreground);
+        NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify((int)(System.currentTimeMillis()/1000), mBuilder.build());
+
 
 
         affirmationEntries = new AffirmationEntries();
@@ -110,6 +126,10 @@ public class AffirmationsFragment extends Fragment {
                                 /*
                                  *   Add notification push code here
                                  */
+                                mBuilder.setContentTitle("Hey There! Friendly Reminder...");
+                                mBuilder.setContentText(a.getText());
+                                // notificationID allows you to update the notification later on.
+                                mNotificationManager.notify(a.getId(), mBuilder.build());
                             }
                             affirmationEntries.saveAffirmation(a);
                         }
