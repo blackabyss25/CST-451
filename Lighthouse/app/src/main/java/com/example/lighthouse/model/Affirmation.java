@@ -5,6 +5,7 @@ import java.io.*;
 public class Affirmation implements Serializable{
     private int id;
     private String text;
+    private boolean needsReminding;
 
     public Affirmation() {
         this.id = 0;
@@ -13,6 +14,7 @@ public class Affirmation implements Serializable{
     public Affirmation(int id, String text) {
         this.id = 0;
         this.text = "";
+        this.needsReminding = false;
     }
     public Affirmation(String text){
         this.id = 0;
@@ -41,5 +43,13 @@ public class Affirmation implements Serializable{
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public boolean getNeedsReminding() {
+        return needsReminding;
+    }
+
+    public void setNeedsReminding(boolean needsReminding) {
+        this.needsReminding = needsReminding;
     }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ public class JournalFragment extends Fragment {
         JournalViewModel journalViewModel = new ViewModelProvider(this).get(JournalViewModel.class);
         binding = FragmentJournalBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        ScrollView scrollView = binding.journalScrollView;
 
         EditText currentEmotion = binding.currentEmotionInput;
         EditText resultantActions = binding.resultantActionsInput;
@@ -102,6 +104,7 @@ public class JournalFragment extends Fragment {
                 }
             }
         });
+        scrollView.smoothScrollTo(0,0);
         return root;
     }
 

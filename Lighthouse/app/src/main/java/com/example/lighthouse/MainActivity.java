@@ -1,7 +1,11 @@
 package com.example.lighthouse;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.lighthouse.model.Journal;
@@ -52,10 +56,6 @@ public class MainActivity extends AppCompatActivity {
             journalDir.mkdir();
         }
         //------------------------------------------------------------------------------
-
-
-
-
     }
 
 
