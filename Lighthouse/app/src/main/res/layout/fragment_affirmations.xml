@@ -23,6 +23,7 @@
             android:layout_margin="5dp"
             android:text="@string/if_the_button_is_blue_then_you_the_lighthouse_will_remind_you_at_some_point_each_day_switch_it_to_gray_by_clicking_it_if_you_don_t_want_the_reminder"
             android:textAlignment="center"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/addAffirmation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -34,6 +35,8 @@
             android:ems="10"
             android:hint="@string/put_your_next_affirmation_here"
             android:inputType="textPersonName"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@id/commitButton"
             app:layout_constraintEnd_toEndOf="parent"
