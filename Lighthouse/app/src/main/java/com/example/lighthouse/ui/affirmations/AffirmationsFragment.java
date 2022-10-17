@@ -10,6 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.GregorianCalendar;
 import android.media.RingtoneManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,12 +39,17 @@ import com.example.lighthouse.databinding.FragmentAffirmationsBinding;
 import com.example.lighthouse.model.Affirmation;
 import com.example.lighthouse.model.AffirmationEntries;
 import com.example.lighthouse.model.Journal;
+import com.example.lighthouse.model.NotificationPusher;
 
 import java.io.*;
 
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Random;
+import java.util.stream.IntStream;
 
+import static com.example.lighthouse.model.NotificationPusher.NOTIFICATION;
 import static java.lang.System.in;
 
 public class AffirmationsFragment extends Fragment {
@@ -51,8 +58,7 @@ public class AffirmationsFragment extends Fragment {
     private String filePath = "/data/data/com.example.lighthouse/files/lighthouseData/affirmationEntries.txt";
     private AffirmationEntries affirmationEntries;
     private ArrayList<Button> affirmationButtons;
-
-
+    public static final String notification_channel_id = "0425";
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +76,7 @@ public class AffirmationsFragment extends Fragment {
 
 
         //Creating the notification state to be pushed to the user's device
-        String notification_channel_id = "0425";
+
         NotificationManager mNotificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(notification_channel_id, getContext().getString(R.string.affirmation), NotificationManager.IMPORTANCE_DEFAULT);
@@ -83,8 +89,7 @@ public class AffirmationsFragment extends Fragment {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getContext(), notification_channel_id);
         mBuilder.setSmallIcon(R.drawable.ic_launcher_foreground);
         NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify((int)(System.currentTimeMillis()/1000), mBuilder.build());
-
+        //notificationManager.notify((int)(System.currentTimeMillis()/1000), mBuilder.build());
 
 
         affirmationEntries = new AffirmationEntries();
@@ -106,28 +111,33 @@ public class AffirmationsFragment extends Fragment {
                     affirmation.setGravity(Gravity.CENTER);
                     affirmation.setPadding(100, 10, 100, 10);
 
-                    if(a.getNeedsReminding()){
+                    if (a.getNeedsReminding()) {
                         a.setNeedsReminding(true);
                         affirmation.setBackgroundColor(Color.CYAN);
+                        affirmation.setTextColor(Color.BLACK);
                     } else {
                         a.setNeedsReminding(false);
                         affirmation.setBackgroundColor(Color.GRAY);
+                        affirmation.setTextColor(Color.WHITE);
                     }
                     affirmation.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             System.out.println("clicked affirmation: " + a.getText() + " | " + a.getNeedsReminding());
-                            if(a.getNeedsReminding()){
+                            if (a.getNeedsReminding()) {
                                 a.setNeedsReminding(false);
                                 affirmation.setBackgroundColor(Color.GRAY);
+                                affirmation.setTextColor(Color.WHITE);
                             } else {
                                 affirmation.setBackgroundColor(Color.CYAN);
+                                affirmation.setTextColor(Color.BLACK);
                                 a.setNeedsReminding(true);
                                 /*
                                  *   Add notification push code here
                                  */
                                 mBuilder.setContentTitle("Hey There! Friendly Reminder...");
                                 mBuilder.setContentText(a.getText());
+                                mBuilder.setSmallIcon(R.mipmap.lighthouse_launcher);
                                 // notificationID allows you to update the notification later on.
                                 mNotificationManager.notify(a.getId(), mBuilder.build());
                             }
@@ -151,7 +161,7 @@ public class AffirmationsFragment extends Fragment {
                     if (!affirmationInput.getText().toString().equals("")) {
                         //Save Affirmation to list
                         Affirmation na = new Affirmation(affirmationInput.getText().toString());
-                        na.setId(affirmationEntries.getAffirmations().size()+1);
+                        na.setId(affirmationEntries.getAffirmations().size() + 1);
                         na.setNeedsReminding(false); /* User can decide later */
                         System.out.println("onClick na text: " + na.getText() + " onClick na id: " + na.getId() + " needsReminding: " + na.getNeedsReminding());
                         //Insert the affirmation into the persisted list
@@ -164,15 +174,16 @@ public class AffirmationsFragment extends Fragment {
                         affirmation.setGravity(Gravity.CENTER);
                         affirmation.setPadding(100, 10, 100, 10);
                         affirmation.setBackgroundColor(Color.CYAN);
-
+                        affirmation.setTextColor(Color.BLACK);
 
                         affirmation.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 System.out.println("clicked affirmation: " + na.getText() + " | " + na.getNeedsReminding());
-                                if(na.getNeedsReminding() == true){
+                                if (na.getNeedsReminding() == true) {
                                     na.setNeedsReminding(false);
                                     affirmation.setBackgroundColor(Color.GRAY);
+                                    affirmation.setTextColor(Color.WHITE);
                                     /*
                                      *
                                      *  Here is where I will need to put my notification flagging
@@ -180,12 +191,9 @@ public class AffirmationsFragment extends Fragment {
                                      */
                                 } else {
                                     affirmation.setBackgroundColor(Color.CYAN);
+                                    affirmation.setTextColor(Color.BLACK);
                                     na.setNeedsReminding(true);
-                                    /*
-                                     *
-                                     *  Here is where I will need to remove any sort of notifications for a certain affirmation
-                                     *
-                                     */
+                                    scheduleNotification(getNotification( na.getText()) , 30000 ) ;
                                 }
                                 //NOTE: I don't know how to do it yet, so both previous comments are just guesses
                                 affirmationEntries.saveAffirmation(na);
@@ -215,4 +223,51 @@ public class AffirmationsFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
+    private void scheduleNotification(Notification notification, int delay) {
+
+        SimpleDateFormat dfDateTime  = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
+        int year = randBetween(2022, 2023);// Here you can set Range of years you need
+        int month = randBetween(0, 11);
+        int hour = randBetween(9, 22); //Hours will be displayed in between 9 to 22
+        int min = randBetween(0, 59);
+        int sec = randBetween(0, 59);
+        GregorianCalendar gc = new GregorianCalendar(year, month, 1);
+        int day = randBetween(1, gc.getActualMaximum(gc.DAY_OF_MONTH));
+        gc.set(year, month, day, hour, min,sec);
+
+        Intent notificationIntent = new Intent(getContext(), NotificationPusher.class);
+        notificationIntent.putExtra(NotificationPusher.NOTIFICATION_ID, 1);
+        notificationIntent.putExtra(NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+        assert alarmManager != null;
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, gc.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntent);
+    }
+
+    private Notification getNotification(String content) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), notification_channel_id);
+        builder.setContentTitle("Friendly reminder to...");
+        builder.setContentText(content);
+        builder.setSmallIcon(R.drawable.ic_launcher_foreground);
+        builder.setAutoCancel(true);
+        builder.setChannelId(notification_channel_id);
+        return builder.build();
+    }
+
+    public static int randBetween(int start, int end) {
+        Random r = new Random();
+        int result = r.nextInt(end - start + 1) + start;
+        return result;
+    }
+
+
+
+
+
 }
+
+
