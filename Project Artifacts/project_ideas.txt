@@ -1,0 +1,24 @@
+Project Ideas:
+
+Tough decision maker - some people struggle with making smart decisions under pressure or freeze up.
+
+This guide app will ask the user some probing questions to help them work through the decision making process on paper, which should help ease the stress of big decisions.
+
+For example,
+
+Is the the problem you are having urgent? Or do you have a little bit of time before a decisions needs to be made?
+
+(If the user clicks the "there is time" option)  the app will remind them to take some deeps breathes and to really center themselves throughout the process, because being calm and collected is the best way to make decisions.  
+
+
+
+
+Mental Unleash App:
+
+One of the biggest stressors for many shy people is the fact that they internalize all of their emotional trauma, and never let it out... until they just can't take it anymore.  
+
+The goal of this app will be to give a user some way to talk with themselves, by saying the things outloud, but in a hopefully private setting, which should ease some of the stress of the unease of communicating with another individual.  However, the app should also incentivize communicating with someone as a method of growth because otherwise, that won't help develop proper coping mechanisms, it's more of a "training wheels" type thing.
+
+
+
+Affirmations App:
