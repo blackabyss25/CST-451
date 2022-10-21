@@ -1,0 +1,13 @@
+How to Install an APK File on Android
+Once you’ve downloaded an APK file on Android, you can install it. 
+This should be a fairly straightforward process and the steps should remain the same for most versions of Android.
+
+To install an APK file on Android:
+
+1. Open your Android device’s file explorer app. 
+2. Locate your APK file in your file explorer app and select it.
+3. The APK installer menu will appear—tap Install. On Samsung devices, this may appear as a pop-up.
+4. Allow time for the app to install.
+5. Tap Done or Open once the installation is complete.
+
+
