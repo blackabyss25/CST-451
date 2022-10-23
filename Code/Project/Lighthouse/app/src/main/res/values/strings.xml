@@ -54,5 +54,8 @@
     <string name="finish">Finish</string>
     <string name="affirmation">Affirmation</string>
     <string name="affirmations">Affirmations</string>
+    <string name="if_you_don_t_feel_like_a_question_is_relevant_just_type_n_a">If you don\'t feel like a question is relevant just type N/A</string>
+    <string name="click_a_journal_entry_to_view_it_s_details">Click a journal entry to view it\'s details</string>
+    <string name="here_is_a_list_of_your_journal_entries">Here is a list of your journal entries</string>
 
 </resources>

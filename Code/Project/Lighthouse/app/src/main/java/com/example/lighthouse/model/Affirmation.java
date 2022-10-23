@@ -25,10 +25,6 @@ public class Affirmation implements Serializable{
         return "ID: " + this.id + " Text: " + this.text + " /n";
     }
 
-    private static void saveAffirmation(){
-        //Write affirmation to save file
-    }
-
     public int getId() {
         return id;
     }

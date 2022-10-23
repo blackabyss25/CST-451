@@ -17,7 +17,6 @@ public class JournalEntries {
         this.journals = new ArrayList<>();
         this.size = 0;
         this.journals = readAllEntries();
-
     }
 
     public Journal getEntry(int id) {

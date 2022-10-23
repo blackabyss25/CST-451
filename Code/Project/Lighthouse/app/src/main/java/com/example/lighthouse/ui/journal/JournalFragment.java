@@ -28,13 +28,11 @@ public class JournalFragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //Toast.makeText(getContext(), "Journal View created",Toast.LENGTH_SHORT).show();
-        JournalViewModel journalViewModel = new ViewModelProvider(this).get(JournalViewModel.class);
         binding = FragmentJournalBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         ScrollView scrollView = binding.journalScrollView;
 
-
+        //Create Journal Input Objects using EditText views
         EditText currentEmotion = binding.currentEmotionInput;
         EditText resultantActions = binding.resultantActionsInput;
         EditText what = binding.whatInput;
@@ -47,7 +45,10 @@ public class JournalFragment extends Fragment {
         EditText control = binding.controlInput;
         EditText tolerance = binding.canITolerateItInput;
         EditText boundary = binding.boundaryInput;
+        TextView journalLegend = binding.journalLegend;
 
+
+        //For ease, adding all the user input views to a list
         ArrayList<EditText> fields = new ArrayList<>();
         fields.add(currentEmotion);
         fields.add(resultantActions);
@@ -61,7 +62,10 @@ public class JournalFragment extends Fragment {
         fields.add(control);
         fields.add(tolerance);
         fields.add(boundary);
+
+        //Create a submission button
         Button submit = binding.journalSubmit;
+
         journals = new JournalEntries();
 
         submit.setOnClickListener(new View.OnClickListener() {

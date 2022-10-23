@@ -39,8 +39,6 @@ public class TimelineFragment extends Fragment {
         TimelineViewModel timelineViewModel = new ViewModelProvider(this).get(TimelineViewModel.class);
         binding = FragmentTimelineBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        final TextView textView = binding.textTimeline;
-        timelineViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         TextView noMemoriesYetTextView = binding.noMemoriesYetTextView;
         LinearLayout timelineJournalEntries = binding.getRoot().findViewById(R.id.timelineMemories);

@@ -80,9 +80,7 @@ public class AffirmationEntries {
     public void add(Affirmation na) {
         affirmations.add(na);
     }
-    public Affirmation get(int i){
-        return affirmations.get(i);
-    }
+
     public ArrayList<Affirmation> getAffirmations() {
         return affirmations;
     }
