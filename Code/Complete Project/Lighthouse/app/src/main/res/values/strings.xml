@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Lighthouse</string>
+    <string name="title_journal">Journal</string>
+    <string name="title_timeline">Timeline</string>
+    <string name="title_affirmations">Affirmations</string>
+    <string name="title_activity_timeline_fragment">TimelineFragment</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Input Text Strings -->
+    <string name="currentFeeling">How are you feeling right now?</string>
+    <string name="resultantActions">This feeling makes me want to...</string>
+    <string name="what">What exactly happened?</string>
+    <string name="where">Where were you when it happened?</string>
+    <string name="noticed">Anything noteworthy?</string>
+    <string name="whenIFelt">When did this happen?</string>
+    <string name="actionsTaken">I did this in response...</string>
+    <string name="theThoughtsThatCameToMind">Thoughts that came to mind?</string>
+    <string name="appropriateReaction">Was my feeling appropriate?</string>
+    <string name="isTheSituationControllable">Is it something I can control?</string>
+    <string name="canITolerateIt">Can I tolerate the situation?</string>
+    <string name="doINeedToSetABoundary">Do I need to create a boundary?</string>
+    <string name="boundaryToSet">What boundary should I set?</string>
+
+    <!-- Input Hint Strings -->
+    <string name="currentFeelingHint"> Angry? Sad? Fearful?</string>
+    <string name="resultantActionsHint">What do you want to do?</string>
+    <string name="whatHint">Its okay if you cant think of anything</string>
+    <string name="whereHint">Try to be as specific as you can</string>
+    <string name="noticedHint">Anything worth noting?</string>
+    <string name="whenIFeltHint">How did you feel again?</string>
+    <string name="actionsTakenHint">What did you do about it?</string>
+    <string name="theThoughtsThatCameToMindHint">What were you thinking in the moment?</string>
+    <string name="appropriateReactionHint">Did the feeling make the situation better?</string>
+    <string name="isTheSituationControllableHint">Sometimes it is not, and that is okay.</string>
+    <string name="canITolerateItHint">Does not always mean you should have to...</string>
+    <string name="close">Close</string>
+    <string name="this_is_how_you_were_feeling_in_the_moment">This is how you were feeling in the moment:</string>
+    <string name="because_of_this_you_wanted_to">This feeling made you want to:</string>
+    <string name="this_is_what_happened">This is what happened:</string>
+    <string name="this_is_where_it_happened">This is where it happened:</string>
+    <string name="this_is_what_you_found_noteworthy">This is what you found noteworthy:</string>
+    <string name="this_is_when_it_happened">This is when it happened:</string>
+    <string name="this_is_what_you_did_in_response">This is what you did in response:</string>
+    <string name="this_is_what_thoughts_came_to_mind_at_the_time">This is what thoughts came to mind at the time:</string>
+    <string name="did_you_feel_like_this_what_an_appropriate_feeling">Did you feel like this what an appropriate feeling:</string>
+    <string name="was_the_situation_something_you_could_control">Was the situation something you could control:</string>
+    <string name="this_is_the_boundary_you_set">This is the boundary you set:</string>
+    <string name="did_you_think_you_could_tolerate_it">Did you think you could tolerate it:</string>
+    <string name="did_you_do_anything_in_response">Did you do anything in response?</string>
+    <string name="if_the_button_is_blue_then_you_the_lighthouse_will_remind_you_at_some_point_each_day_switch_it_to_gray_by_clicking_it_if_you_don_t_want_the_reminder">If the button is blue, then you will get a reminder you at some point each day, switch it to gray by clicking it if you don\'t want the reminder.</string>
+    <string name="commit_to_it">Commit to it!</string>
+    <string name="put_your_next_affirmation_here">Put your next affirmation here!</string>
+    <string name="finish">Finish</string>
+    <string name="affirmation">Affirmation</string>
+    <string name="affirmations">Affirmations</string>
+    <string name="if_you_don_t_feel_like_a_question_is_relevant_just_type_n_a">If you don\'t feel like a question is relevant just type N/A</string>
+    <string name="click_a_journal_entry_to_view_it_s_details">Click a journal entry to view it\'s details</string>
+    <string name="here_is_a_list_of_your_journal_entries">Here is a list of your journal entries</string>
+
+</resources>
